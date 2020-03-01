@@ -1,14 +1,20 @@
-let hero = {
-  name: "Маг",
-  health: 90,
-};
+let heros = [
+  {name: 'мечник', health: 10},
+  {name: 'маг', health: 100},
+  {name: 'лучник', health: 80},
+];
 
-export default function healthLevel(hero) {
-  if (hero.health > 50) {
-    return "healthy";
-  } else if (hero.health >= 15) {
-    return "wounded";
-  } else {
-    return "critical";
-  }
+export default function healthSort(heros) {
+  heros.sort((a, b) => {
+    if (b.health > a.health) {
+    return 1;
+    }
+    if (b.health < a.health) {
+    return -1;
+    }
+    if (b.health == a.health)
+    return 0;
+    })
+    return heros;
 }
+

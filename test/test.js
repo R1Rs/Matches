@@ -1,30 +1,44 @@
-import healthLevel from '../src/index';
+import healthSort from '../src/index';
 
-test("Testing health", () => {
-  const hero = {
-    name: "Гам",
-    health: 50,
-  };
+test("Testing sort", () => {
+  const heros = [
+    {name: 'мечник', health: 20},
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 120},
+    {name: 'свечник', health: 20},
+  ]
 
-  const received = healthLevel(hero);
-  const expected = "wounded";
+  const heros2 = [
+    {name: 'мечник', health: 20},
+    {name: 'маг', health: 100},
+  ]
 
-  const hero2 = {
-    name: "bam",
-    health: 14,
-  };
+  const received = healthSort(heros);
+  const expected = [
+    {name: 'лучник', health: 120},
+    {name: 'маг', health: 100},
+    {name: 'мечник', health: 20},
+    {name: 'свечник', health: 20},
+  ]
 
-  const received2 = healthLevel(hero2);
-  const expected2 = "critical";
+  const received1 = healthSort(heros)[1];
+  const expected1 = {name: 'маг', health: 100};
 
-  const hero3 = {
-    name: "aaa",
-    health: 80,
-  };
+  const received2 = healthSort(heros)[0];
+  const expected2 = {name: 'лучник', health: 120};
 
-  const received3 = healthLevel(hero3);
-  const expected3 = "healthy";
-  expect(received).toBe(expected);
-  expect(received2).toBe(expected2);
-  expect(received3).toBe(expected3);
+  const received3 = healthSort(heros)[2].health;
+  const expected3 = 20;
+
+  const received4 = healthSort(heros2);
+  const expected4 = [
+    {name: 'маг', health: 100},
+    {name: 'мечник', health: 20},
+  ]
+
+  expect(received).toEqual(expected);
+  expect(received1).toEqual(expected1);
+  expect(received2).toEqual(expected2);
+  expect(received3).toEqual(expected3);
+  expect(received4).toEqual(expected4);
 });
