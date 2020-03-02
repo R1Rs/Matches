@@ -9,10 +9,9 @@ export default function healthSort(heros) {
     if (b.health > a.health) {
     return 1;
     }
-    if (b.health < a.health) {
+    else if (b.health < a.health) {
     return -1;
     }
-    if (b.health == a.health)
     return 0;
     })
     return heros;
